@@ -11,6 +11,7 @@ client = TestClient(app)
 def test_get_contacts():
     r = client.get("billetera/contactos?minumero={}".format(quote_plus("21345")))
     assert r.status_code == 200
+    assert r.json() == {"123": "Luisa", "456": "Andrea"}
 
 
 def test_get_contacts_not_existing_number():
@@ -90,5 +91,5 @@ def test_get_history():
     r = client.get("billetera/historial?minumero={}".format(quote_plus("21345")))
     rj = r.json()
 
-    assert r.status_code == 200
+    assert rj['saldo'] == 100
     assert rj["nombre"] == "Arnaldo"
