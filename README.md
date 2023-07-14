@@ -9,3 +9,17 @@ El código a modificar debería ser el de inicialización de la BD para guardar 
 El caso de prueba más saliente a implementar es el de revisar que efectivamente no se permitan transacciones totalizando más del monto permitido en un mismo día. Se debe verificar que no se permita una transacción individual que exceda el permitido así como que no se permita excederlo realizando múltiples transacciones pequeñas.
 
 No considero que el cambio sea riesgoso. En su mayoría, este consta del añadido de una nueva condicional a la lógica de validación de `transferir`. Creo que el riesgo mayor sería que el código relacionado al límite diario sea defectuoso y permita transacciones que excedan el límite; esto no representaría una disminución de funcionalidad con respecto a la versión anterior de la aplicación.
+
+## Comandos
+Para correr la aplicación (una vez instaladas las dependencias detalladas en `requirements.txt`)
+
+``` sh
+uvicorn ef:app --reload
+```
+
+Para correr los tests
+
+``` sh
+pytest test.py
+```
+
